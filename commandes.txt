@@ -1,2 +1,7 @@
 docker build -t test:1 .
 
+
+docker run -d -P -e "TITO_VERSION=V1.9.6" -e "PROXY_NAME=wvfp.cpod-vrealizesuite.az-demo.shwrfr.com" -e "PROXY_PORT=2878" test:1
+
+
+
