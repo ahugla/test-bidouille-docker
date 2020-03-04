@@ -10,6 +10,11 @@ RUN chmod +x /usr/local/bin/apache2-foreground; \
     apt-get install -y libmcrypt-dev git curl; \
     docker-php-ext-install mysqli pdo_mysql sockets; \
     echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf; a2enconf servername; \
-    apt-get clean && rm -rf /var/cache/apt/archives;
+    apt-get clean && rm -rf /var/cache/apt/archives; \
+    cd /tmp; \
+    curl -O https://raw.githubusercontent.com/ahugla/test-bidouille-docker/master/Debian9/postinstall.sh; \
+    chmod 755 postinstall.sh; \
+    ./postinstall.sh;
+
 
 ENTRYPOINT ["/usr/local/bin/apache2-foreground"]
