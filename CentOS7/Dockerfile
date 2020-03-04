@@ -2,6 +2,8 @@ FROM centos:7
 
 ENV container docker
 
+COPY apache2-foreground /usr/local/bin/apache2-foreground
+
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
@@ -27,7 +29,8 @@ sed -i '/<Directory "\/var\/www\/html">/a Options +ExecCGI' /etc/httpd/conf/http
 VOLUME [ "/sys/fs/cgroup" ]
 
 
-CMD ["/usr/sbin/init"]
+ENTRYPOINT ["/usr/local/bin/apache2-foreground"]
+
 
 
 
