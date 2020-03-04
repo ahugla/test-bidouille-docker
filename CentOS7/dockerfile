@@ -2,7 +2,7 @@ FROM centos:7
 
 ENV container docker
 
-COPY apache2-foreground /usr/local/bin/apache2-foreground
+COPY container_start.sh /usr/local/bin/container_start.sh
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
@@ -23,7 +23,8 @@ yum install -y python36 python-pip python36-setuptools gcc python3-devel; \
 easy_install-3.6 pip; \
 pip3 install wavefront-opentracing-sdk-python --no-cache-dir; \
 sed -i '/<Directory "\/var\/www\/html">/a AddHandler cgi-script .cgi .pl .py' /etc/httpd/conf/httpd.conf; \
-sed -i '/<Directory "\/var\/www\/html">/a Options +ExecCGI' /etc/httpd/conf/httpd.conf; 
+sed -i '/<Directory "\/var\/www\/html">/a Options +ExecCGI' /etc/httpd/conf/httpd.conf; \
+chmod 755 /usr/local/bin/container_start.sh;
 
 
 VOLUME [ "/sys/fs/cgroup" ]
