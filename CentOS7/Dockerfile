@@ -1,3 +1,45 @@
+FROM centos:7
+
+ENV container docker
+
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
+systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+
+RUN yum update; \
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; \
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm; \
+yum install -y httpd php php-common git; \
+yum install -y python36 python-pip python36-setuptools gcc python3-devel; \
+easy_install-3.6 pip; \
+pip3 install wavefront-opentracing-sdk-python --no-cache-dir; \
+sed -i '/<Directory "\/var\/www\/html">/a AddHandler cgi-script .cgi .pl .py' /etc/httpd/conf/httpd.conf; \
+sed -i '/<Directory "\/var\/www\/html">/a Options +ExecCGI' /etc/httpd/conf/httpd.conf; \
+
+
+VOLUME [ "/sys/fs/cgroup" ]
+
+
+CMD ["/usr/sbin/init"]
+
+
+
+
+
+
+
+
+
+
+
+
 # Created by Vincent Meoc
 # Create the Tito Front End container
 
