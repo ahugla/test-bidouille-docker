@@ -1,16 +1,3 @@
-docker build -t test:1 .
 
+docker run -d -P -e "TITO_VERSION=V2.3" -e "PROXY_NAME=wvfp.cpod-vrealizesuite.az-demo.shwrfr.com" -e "PROXY_PORT=2878" tito-deb:2
 
-docker run -d -P -e "TITO_VERSION=V2.3" -e "PROXY_NAME=wvfp.cpod-vrealizesuite.az-demo.shwrfr.com" -e "PROXY_PORT=2878" test:1
-
-
-
-docker run -d -P --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro  centos:sysd  /usr/sbin/init     OK
-docker run -d -P --privileged   centos:sysd  /usr/sbin/init    OK
-docker run -d -P  -v /sys/fs/cgroup:/sys/fs/cgroup:ro  centos:sysd  /usr/sbin/init  NOOK
-
-
-
-docker run -d -P --privileged -e "TITO_VERSION=V2.3" -e "PROXY_NAME=wvfp.cpod-vrealizesuite.az-demo.shwrfr.com" -e "PROXY_PORT=2878" test:1
-    =>   entrypoint : NOOK
-    =>   cmd        : ??
