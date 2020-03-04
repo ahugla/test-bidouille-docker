@@ -13,9 +13,9 @@ RUN chmod +x /usr/local/bin/apache2-foreground; \
     echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf; a2enconf servername; \
     apt-get clean && rm -rf /var/cache/apt/archives; \
     cd /tmp; \
-    curl -O https://raw.githubusercontent.com/ahugla/test-bidouille-docker/master/Debian9/postinstall.sh; \
-    chmod 755 postinstall.sh; \
-    ./postinstall.sh;
+    curl -O https://raw.githubusercontent.com/ahugla/test-bidouille-docker/master/Debian9/installTracing.sh; \
+    chmod 755 installTracing.sh; \
+    ./installTracing.sh;
 
 
 ENTRYPOINT ["/usr/local/bin/apache2-foreground"]

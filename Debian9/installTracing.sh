@@ -1,4 +1,11 @@
 
+# Install:  Python 3.6, pip and SDK for wavefront tracing
+#
+# Alexandre hugla
+# 4 mars 2019
+#
+# -----------------------------------------------------------
+
 
 # INSTALL PYTHON  (TRES LONG)
 #---------------
@@ -16,8 +23,8 @@ tar xvf Python-3.6.4.tgz
 
 #prepare the build
 cd Python-3.6.4
-#./configure --enable-optimizations     # LENT :  The configure option --enable-optimizations enables running test suites to generate data for profiling Python. The resulting python binary has better performance in executing python code. 
-./configure                             # LENT :   build plus rapide apres ?
+#./configure --enable-optimizations     # LENT:  The configure option --enable-optimizations enables running test suites to generate data for profiling Python. The resulting python binary has better performance in executing python code. 
+./configure                             # PLUS RAPIDE
 
 
 #build Python
