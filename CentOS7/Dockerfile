@@ -29,6 +29,7 @@ sed -i '/<Directory "\/var\/www\/html">/a Options +ExecCGI' /etc/httpd/conf/http
 VOLUME [ "/sys/fs/cgroup" ]
 
 
+
 ENTRYPOINT ["/usr/local/bin/apache2-foreground"]
 
 
