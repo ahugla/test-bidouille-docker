@@ -30,6 +30,6 @@ chmod 755 /usr/local/bin/container_start.sh;
 VOLUME [ "/sys/fs/cgroup" ]
 
 
-
-ENTRYPOINT ["/usr/local/bin/container_start.sh"]
+CMD /usr/local/bin/container_start.sh
+#ENTRYPOINT ["/usr/local/bin/container_start.sh"]
 
