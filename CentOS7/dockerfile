@@ -31,5 +31,5 @@ VOLUME [ "/sys/fs/cgroup" ]
 
 
 
-ENTRYPOINT ["/usr/local/bin/apache2-foreground"]
+ENTRYPOINT ["/usr/local/bin/container_start.sh"]
 
