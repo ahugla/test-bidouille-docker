@@ -2,6 +2,7 @@
 
 
 
+
 #get Tito code
 if [ -z "$(ls -A /var/www/html)" ]; then
   git clone https://github.com/vmeoc/Tito /var/www/html/
@@ -14,6 +15,18 @@ if [ -n "$TITO_VERSION" ]; then
   git pull
   git checkout $TITO_VERSION
 fi
+
+
+# Rendre executable le script Python de Tracing
+chmod 777 /var/www/html/sendTraces.py
+
+
+# WAVEFRONT CONFIG - set variable for apache in "/etc/sysconfig/httpd"
+echo "PROXY_NAME=$PROXY_NAME" >> /etc/sysconfig/httpd
+echo "PROXY_PORT=$PROXY_PORT" >> /etc/sysconfig/httpd
+
+
+systemctl start httpd
 
 
 # pour que le process ne s'arrete pas et que le container ne termine pas
