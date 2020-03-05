@@ -12,14 +12,14 @@
 echo "deb http://ftp.de.debian.org/debian testing main" >> /etc/apt/sources.list
 echo 'APT::Default-Release "stable";' | tee -a /etc/apt/apt.conf.d/00local
 apt-get update
-apt-get -t testing install python3
+apt-get -t testing install -y python3
 
 
 # INSTALL PYTHON3-PIP 
 #----------------------
 rm -f /etc/apt/apt.conf.d/00local
 apt-get update
-apt-get  install python3-pip
+apt-get install -y python3-pip
 
 
 # INSTALL WAVEFRONT SDK 
